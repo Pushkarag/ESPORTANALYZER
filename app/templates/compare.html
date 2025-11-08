@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card p-4 mb-4">
+  <h3>⚔️ 1v1 Compare</h3>
+
+  <form method="get" class="row g-3 mt-3">
+    <div class="col-md-5">
+      <input name="p1" class="form-control form-control-lg"
+             placeholder="Player 1" value="{{ p1 }}">
+    </div>
+    <div class="col-md-5">
+      <input name="p2" class="form-control form-control-lg"
+             placeholder="Player 2" value="{{ p2 }}">
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-primary btn-lg w-100">Compare</button>
+    </div>
+  </form>
+</div>
+
+
+{% if r1 and r2 %}
+<div class="card p-4 mb-4">
+  <h4>{{ p1 }} vs {{ p2 }}</h4>
+  <canvas id="compareChart" height="200"></canvas>
+</div>
+
+<script>
+const labels = {{ stats|tojson }};
+const r1 = {{ r1|tojson }};
+const r2 = {{ r2|tojson }};
+
+const d1 = labels.map(x => r1[x] ?? 0);
+const d2 = labels.map(x => r2[x] ?? 0);
+
+new Chart(document.getElementById("compareChart"), {
+  type: "radar",
+  data: {
+    labels: labels,
+    datasets: [
+      {
+        label: "{{ p1 }}",
+        data: d1,
+        borderColor: "#00eaff",
+        backgroundColor: "rgba(0,234,255,0.25)"
+      },
+      {
+        label: "{{ p2 }}",
+        data: d2,
+        borderColor: "#ff3ec9",
+        backgroundColor: "rgba(255,62,201,0.25)"
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      r: {
+        angleLines: { color: "#555" },
+        grid: { color: "#444" },
+        pointLabels: { color: "#ddd", font: { size: 14 } }
+      }
+    }
+  }
+});
+</script>
+{% endif %}
+
+{% endblock %}

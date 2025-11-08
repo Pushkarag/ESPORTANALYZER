@@ -1,0 +1,29 @@
+{
+  "features": [
+    "matches_played",
+    "kills",
+    "assists",
+    "damage",
+    "headshots",
+    "revives",
+    "survival_time",
+    "distance",
+    "kills_per_match",
+    "assists_per_match",
+    "damage_per_match",
+    "headshot_rate",
+    "revives_per_match",
+    "survival_per_match",
+    "movement_per_match",
+    "aggression_score",
+    "support_score",
+    "survival_score",
+    "wpi"
+  ],
+  "metrics": {
+    "mae": 9.746616252249119,
+    "rmse": 33.74494822757971,
+    "r2": 0.9828363565904572
+  },
+  "model": "xgb"
+}

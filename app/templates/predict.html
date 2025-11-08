@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <div class="card shadow-sm mb-3">
+      <div class="card-body">
+        <h4 class="mb-3">Predict Auction Value</h4>
+        <form method="post">
+          <div class="row g-2">
+            {% for field in ["matches_played","kills","assists","damage","headshots","revives","survival_time","walk_distance","ride_distance"] %}
+              <div class="col-6">
+                <label class="form-label">{{ field.replace("_"," ").title() }}</label>
+                <input type="number" step="any" class="form-control" name="{{ field }}" required>
+              </div>
+            {% endfor %}
+          </div>
+          <button class="btn btn-success mt-3">Predict</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h4>Result</h4>
+        {% if pred is not none %}
+          <p class="fs-4">Estimated Auction Value: <b>{{ pred }}</b></p>
+          <small class="text-muted">* Synthetic target unless you replace with real labels.</small>
+        {% else %}
+          <p>Enter player stats to get a prediction.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

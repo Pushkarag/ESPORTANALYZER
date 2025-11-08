@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card p-4">
+  <h3 class="mb-3">🏆 Leaderboard</h3>
+
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Player</th>
+        <th>WPI</th>
+        <th>Kills</th>
+        <th>Damage</th>
+        <th>Matches</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for p in players %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><a href="{{ url_for('player', player_name=p.name) }}">{{ p.name }}</a></td>
+        <td>{{ p.wpi }}</td>
+        <td>{{ p.kills }}</td>
+        <td>{{ p.damage }}</td>
+        <td>{{ p.matches }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

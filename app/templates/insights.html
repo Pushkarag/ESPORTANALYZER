@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6 mb-3">
+    <div class="card shadow-sm"><div class="card-body">
+      <h5>Kills per match vs Auction value</h5>
+      <img class="img-fluid" src="{{ url_for('static', filename=img1) }}" alt="scatter">
+    </div></div>
+  </div>
+  <div class="col-md-6 mb-3">
+    <div class="card shadow-sm"><div class="card-body">
+      <h5>Distribution: Damage per match</h5>
+      <img class="img-fluid" src="{{ url_for('static', filename=img2) }}" alt="hist">
+    </div></div>
+  </div>
+</div>
+{% endblock %}

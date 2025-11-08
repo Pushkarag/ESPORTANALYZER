@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>E-Sports ML</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- ✅ ADVANCED NEON UI -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+      :root {
+        --bg1:#0d0d16;
+        --bg2:#11111e;
+        --primary:#7f5cff;
+        --cyan:#00eaff;
+        --pink:#ff3ec9;
+        --glass:rgba(255,255,255,0.07);
+        --text:#eceff5;
+      }
+
+      body {
+        font-family:'Inter',sans-serif;
+        background: radial-gradient(circle at 10% 20%, #1c1c28, #0d0d16 70%),
+                    linear-gradient(120deg, var(--bg1), var(--bg2));
+        color:var(--text);
+        min-height:100vh;
+      }
+
+      /* neon particles */
+      body::before {
+        content:"";
+        position:fixed;
+        inset:0;
+        background:
+          radial-gradient(circle at 15% 25%, rgba(0,255,255,0.12), transparent 60%),
+          radial-gradient(circle at 80% 20%, rgba(255,0,200,0.12), transparent 60%),
+          radial-gradient(circle at 50% 80%, rgba(120,120,255,0.10), transparent 60%);
+        z-index:-1;
+        animation: drift 15s infinite alternate ease-in-out;
+      }
+      @keyframes drift {
+        0% { transform:scale(1); opacity:0.9; }
+        100% { transform:scale(1.2); opacity:0.7; }
+      }
+
+      .navbar {
+        background:rgba(12,12,20,0.55) !important;
+        backdrop-filter:blur(14px);
+        border-bottom:1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .navbar .nav-link {
+        color:#bfc1d6 !important;
+        margin-left:18px;
+      }
+
+      .navbar .nav-link:hover {
+        color:#ffffff !important;
+        text-shadow:0 0 8px var(--cyan);
+      }
+
+      .brand-grad {
+        background:linear-gradient(90deg,var(--primary),var(--cyan));
+        -webkit-background-clip:text;
+        background-clip:text;
+        color:transparent;
+        font-weight:700;
+        font-size:1.4rem;
+      }
+
+      .card {
+        background:var(--glass);
+        border:1px solid rgba(55, 43, 43, 0.08);
+        border-radius:18px;
+        padding:1.7rem;
+        backdrop-filter:blur(18px);
+        transition:0.25s ease;
+      }
+
+      .card:hover {
+        transform:translateY(-5px);
+        box-shadow:0 12px 32px rgba(0,0,0,0.35);
+      }
+
+      .btn-primary {
+        background:linear-gradient(90deg,var(--primary),var(--cyan));
+        border:0;
+        padding:0.7rem 1.4rem;
+      }
+
+      input.form-control-lg {
+        background:rgba(255,255,255,0.1);
+        border:1px solid rgba(255,255,255,0.12);
+        color:var(--text);
+      }
+
+      canvas {
+        filter: drop-shadow(0 0 6px rgba(249, 249, 249, 0.89));
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark mb-4">
+      <div class="container d-flex align-items-center">
+        <a class="navbar-brand brand-grad" href="{{ url_for('index') }}">E-Sports ML</a>
+
+        <div class="d-flex ms-auto">
+          <a class="nav-link" href="{{ url_for('leaderboard') }}">Leaderboard</a>
+          <a class="nav-link" href="{{ url_for('compare') }}">1v1 Compare</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container pb-5">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert alert-warning">{{ messages[0] }}</div>
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %}
+    </main>
+
+  </body>
+</html>
