@@ -4,7 +4,7 @@ services:
     env: python
     region: singapore
     plan: free
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install -r req.txt
     startCommand: gunicorn app.app:app --workers 1 --threads 8 --timeout 0
     envVars:
       - key: PYTHON_VERSION
