@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: esports-ml
+    name: esports-analyzer
     env: python
     region: singapore
     plan: free
