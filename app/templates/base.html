@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html>F
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
@@ -13,97 +13,95 @@
 
     <!-- ✅ ADVANCED NEON UI -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+     
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-      :root {
-        --bg1:#0d0d16;
-        --bg2:#11111e;
-        --primary:#7f5cff;
-        --cyan:#00eaff;
-        --pink:#ff3ec9;
-        --glass:rgba(255,255,255,0.07);
-        --text:#eceff5;
-      }
+  :root {
+    --bg: #f5f6fa;
+    --nav: #ffffff;
+    --card: #ffffff;
+    --text: #222;
+    --text-light: #555;
+    --primary: #4c6ef5; /* soft blue */
+    --accent: #9775fa;  /* soft purple */
+    --border: #e5e5e5;
+  }
 
-      body {
-        font-family:'Inter',sans-serif;
-        background: radial-gradient(circle at 10% 20%, #1c1c28, #0d0d16 70%),
-                    linear-gradient(120deg, var(--bg1), var(--bg2));
-        color:var(--text);
-        min-height:100vh;
-      }
+  body {
+    background: var(--bg);
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+  }
 
-      /* neon particles */
-      body::before {
-        content:"";
-        position:fixed;
-        inset:0;
-        background:
-          radial-gradient(circle at 15% 25%, rgba(0,255,255,0.12), transparent 60%),
-          radial-gradient(circle at 80% 20%, rgba(255,0,200,0.12), transparent 60%),
-          radial-gradient(circle at 50% 80%, rgba(120,120,255,0.10), transparent 60%);
-        z-index:-1;
-        animation: drift 15s infinite alternate ease-in-out;
-      }
-      @keyframes drift {
-        0% { transform:scale(1); opacity:0.9; }
-        100% { transform:scale(1.2); opacity:0.7; }
-      }
+  /* NAVBAR */
+  .navbar {
+    background: var(--nav) !important;
+    border-bottom: 1px solid var(--border);
+  }
+  .navbar .nav-link {
+    color: var(--text-light) !important;
+    margin-left: 20px;
+    font-weight: 500;
+  }
+  .navbar .nav-link:hover {
+    color: var(--primary) !important;
+  }
+  .navbar-brand {
+    color: var(--primary) !important;
+    font-weight: 700;
+  }
 
-      .navbar {
-        background:rgba(12,12,20,0.55) !important;
-        backdrop-filter:blur(14px);
-        border-bottom:1px solid rgba(0, 0, 0, 0.08);
-      }
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: 0.2s;
+  }
+  .card:hover {
+    box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  }
 
-      .navbar .nav-link {
-        color:#bfc1d6 !important;
-        margin-left:18px;
-      }
+  /* BUTTON */
+  .btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    padding: 10px 20px;
+    font-weight: 600;
+  }
+  .btn-primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
 
-      .navbar .nav-link:hover {
-        color:#ffffff !important;
-        text-shadow:0 0 8px var(--cyan);
-      }
+  /* INPUT */
+  input.form-control {
+    border: 1px solid var(--border);
+    padding: 12px;
+    background: #fff;
+  }
+  input.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: none;
+  }
 
-      .brand-grad {
-        background:linear-gradient(90deg,var(--primary),var(--cyan));
-        -webkit-background-clip:text;
-        background-clip:text;
-        color:transparent;
-        font-weight:700;
-        font-size:1.4rem;
-      }
+  /* TEXT */
+  h1,h2,h3,h4,h5 {
+    color: var(--text);
+    font-weight: 600;
+  }
+  p, span, li {
+    color: var(--text-light);
+  }
 
-      .card {
-        background:var(--glass);
-        border:1px solid rgba(55, 43, 43, 0.08);
-        border-radius:18px;
-        padding:1.7rem;
-        backdrop-filter:blur(18px);
-        transition:0.25s ease;
-      }
+  /* CHARTS */
+  canvas {
+    filter: none; /* remove neon glow */
+  }
 
-      .card:hover {
-        transform:translateY(-5px);
-        box-shadow:0 12px 32px rgba(0,0,0,0.35);
-      }
 
-      .btn-primary {
-        background:linear-gradient(90deg,var(--primary),var(--cyan));
-        border:0;
-        padding:0.7rem 1.4rem;
-      }
-
-      input.form-control-lg {
-        background:rgba(255,255,255,0.1);
-        border:1px solid rgba(255,255,255,0.12);
-        color:var(--text);
-      }
-
-      canvas {
-        filter: drop-shadow(0 0 6px rgba(249, 249, 249, 0.89));
-      }
     </style>
   </head>
 
