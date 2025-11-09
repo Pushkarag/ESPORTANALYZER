@@ -8,4 +8,4 @@ services:
     startCommand: gunicorn app.app:app --workers 1 --threads 8 --timeout 0
     envVars:
       - key: PYTHON_VERSION
-        value: 3.10
+        value: 3.10.12
